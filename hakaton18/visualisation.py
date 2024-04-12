@@ -22,8 +22,9 @@ class LasProcessing:
         x_axis = self.las_read[x_axis_name]
         y_axis = self.las_read[y_axis_name]
 
-        top_border_index = np.where(self.las_read['Z'].round(1) == round(self.get_borders()[0], 1))
-        bottom_border_index = np.where(self.las_read['Z'].round(1) == round(self.get_borders()[1], 1))
+        top_border_index = np.where(self.las_read['Z'].round(0) == round(self.get_borders()[0], 0))
+        bottom_border_index = np.where(self.las_read['Z'].round(0) == round(self.get_borders()[1], 0))
+        print(top_border_index, bottom_border_index)
 
         plt.figure(figsize=(10, 20), dpi=80)
         color = 'black'
@@ -63,6 +64,6 @@ class LasProcessing:
         #     df_excel[(df_excel['Z'] < self.get_borders()[0]) & (df_excel['Z'] > self.get_borders()[1])].index)
 
 
-a = LasProcessing("12_continuous.las")
-a.get_graphics_continuous('NEU', 'DEPT')
-a.las_to_csv()
+a = LasProcessing("26_continuous.las")
+a.get_graphics_continuous('GGKP', 'DEPT')
+# a.las_to_csv()
